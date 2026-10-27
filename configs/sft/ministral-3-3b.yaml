@@ -1,0 +1,31 @@
+wandb:
+  project: "likelux"
+
+model:
+  name: "mistralai/Ministral-3-3B-Instruct-2512-BF16"
+  device_map: "cuda:0"
+
+data:
+  train_file: "data/processed/next-like-prediction-sft-train-70.json"
+
+training_args:
+  output_dir: "/tmp"
+  bf16: true
+  gradient_checkpointing: true
+  max_length: 4500
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8
+  warmup_ratio: 0.1
+  lr_scheduler_type: "linear"
+  num_train_epochs: 1
+  logging_first_step: true
+  logging_steps: 25
+  eval_strategy: "no"
+  save_strategy: "no"
+  optim: "paged_adamw_8bit"
+  report_to: "wandb"
+  run_name: "ministral-3-3b-sft"
+
+output:
+  save_model_path: "outputs/models/ministral-3-3b-sft"

@@ -1,0 +1,5 @@
+model_path: google/gemini-3.5-flash-lite
+data_path: data/processed/next-like-prediction-test-filtered.json
+output_path: outputs/results/gemini-3.5-flash-lite.json
+max_num_samples: 75
+system_prompt: You are a social media user evaluating online posts. Keep your binary predictions (1 for like, 0 for dislike) consistent with your previous interaction history and the preferences you have expressed earlier.
